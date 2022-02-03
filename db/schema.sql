@@ -4,7 +4,7 @@ DROP TABLE IF EXISTS parties;
 DROP TABLE IF EXISTS voters;
 
 
-CREATE TABLE department (
+CREATE TABLE departments (
   id INTEGER AUTO_INCREMENT PRIMARY KEY,
   name VARCHAR(30) NOT NULL
 );
@@ -21,5 +21,5 @@ CREATE TABLE employees (
   first_name VARCHAR(30) NOT NULL,
   last_name VARCHAR(30) NOT NULL,
   role_id INTEGER,
-  manager_id INTEGER
+  manager_id INTEGER 
 );
