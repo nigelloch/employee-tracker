@@ -1,4 +1,4 @@
-const db = require("../../db/connection");
+const db = require("../db/connection");
 
 // Select all employees
 const selectAllemployees = function(cb) {
@@ -40,7 +40,7 @@ const selectOneemployee = function(id,cb) {
 // Create new employee
 const createNewemployee = function(body,cb) {
 
-  const sql = `INSERT INTO employees (first_name, last_name) VALUES (?,?,?)`;
+  const sql =  `INSERT INTO employees (first_name, last_name) VALUES (?,?)`;       
   const params = [body.first_name, body.last_name];
 
   db.query(sql, params, (err, result) => {

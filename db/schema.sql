@@ -1,7 +1,7 @@
-DROP TABLE IF EXISTS votes;
-DROP TABLE IF EXISTS candidates;
-DROP TABLE IF EXISTS parties;
-DROP TABLE IF EXISTS voters;
+DROP TABLE IF EXISTS departments;
+DROP TABLE IF EXISTS roles;
+DROP TABLE IF EXISTS employees;
+
 
 
 CREATE TABLE departments (
@@ -12,7 +12,7 @@ CREATE TABLE departments (
 CREATE TABLE roles (
   id INTEGER AUTO_INCREMENT PRIMARY KEY,
   title VARCHAR(30) NOT NULL,
-  salary DECIMAL,
+  salary DECIMAL(6,2),
   department_id INTEGER
 );
 
@@ -23,3 +23,4 @@ CREATE TABLE employees (
   role_id INTEGER,
   manager_id INTEGER 
 );
+

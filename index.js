@@ -2,6 +2,7 @@ const inquirer = require("inquirer");
 const queries = require("./queries");
 
 
+
 const questions = function() {
     inquirer
     .prompt([
@@ -22,7 +23,18 @@ const questions = function() {
             console.log('singleEmployee')
             questions();
         } else if (data.option === "create new employee") {
-            inquirer.prompt() .then(function(data){
+            inquirer.prompt(
+                [
+                    {
+                    name: "firstName",
+                    message: "What is the employees first name?"
+                    },
+                    {
+                    name: "lastName",
+                    message: "what is the employees last name?"
+                    }      
+                ]
+            ).then(function(data){
                 queries.createNewemployee(data,questions)
             })
         } else if (data.option === "delete employee") {
@@ -39,7 +51,12 @@ const questions = function() {
             console.log('singleDepartment')
             questions();
         } else if (data.option === "create new department") {
-            inquirer.prompt() .then(function(data){
+            inquirer.prompt(
+                    {
+                    name: "name",
+                    message: "What is the new departments name?"
+                    }
+            ) .then(function(data){
                 queries.createNewdepartment(data,questions)
             })
         } else if (data.option === "delete department") {
@@ -52,7 +69,16 @@ const questions = function() {
                 queries.getRoles(data,questions)
             })
         } else if (data.option === "create new role") {
-            inquirer.prompt() .then(function(data){
+            inquirer.prompt(
+                {
+                    name: "title",
+                    message: "What is the new roles title?"
+                },
+                {
+                    name: "salary",
+                    message: "What is the new departments salary?"
+                }
+            ) .then(function(data){
                 queries.createNewrole(data,questions)
             })
         } else if (data.option === "create new role") {
@@ -63,4 +89,5 @@ const questions = function() {
     })
 }
 
+questions();
 
