@@ -1,7 +1,8 @@
 const db = require("../db/connection");
 
 // Select all roles
-const getRoles = function() {
+const getRoles = function(cb) {
+  
   const sql = `SELECT * FROM roles`;
   db.query(sql, (err, rows) => {
     if (err) {
@@ -12,8 +13,9 @@ const getRoles = function() {
       message: "success",
       data: rows,
     });
+    cb();
   });
-}
+};
 
 
 // Select one role
@@ -34,7 +36,7 @@ const getOnerole = function(id) {
 }
 
 // Create new role
-const createNewrole = function(body) {
+const createNewrole = function(body,cb) {
 
     const sql = `INSERT INTO roles (title, salary, department_id) VALUES (?,?,?)`;
     const params = [body.title, body.salary, body.department_id];
@@ -48,6 +50,7 @@ const createNewrole = function(body) {
         message: "success",
         data: body,
       });
+      cb();
     });
   }
 
@@ -99,4 +102,4 @@ const deleteRole = function(id) {
   });
 }
 
-module.exports = {getRoles,getOnerole,createNewrole,deleteRole};
+module.exports = {getRoles,getOnerole,createNewrole,updateRole,deleteRole};

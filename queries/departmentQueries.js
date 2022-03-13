@@ -2,18 +2,20 @@ const db = require("../db/connection");
 
 // Select all departments
 const selectAlldepartments = function() {
-
   const sql = `SELECT * FROM departments`;
-  db.query(sql, (err, rows) => {
-    if (err) {
-      console.log({ error: err.message });
-      return;
-    }
-    console.log({
-      message: "success",
-      data: rows,
-    });
-  });
+  return db.promise().query(sql);
+  // const sql = `SELECT * FROM departments`;
+  // db.query(sql, (err, rows) => {
+  //   if (err) {
+  //     console.log({ error: err.message });
+  //     return;
+  //   }
+  //   console.log({
+  //     message: "success",
+  //     data: rows,
+  //   });
+  //   cb();
+  // });
 };
 
 // Select one department
@@ -34,7 +36,7 @@ const selectOnedepartment = function(id) {
 };
 
 // Create new department
-const createNewdepartment = function(body) {
+const createNewdepartment = function(body,cb) {
 
     const sql = `INSERT INTO departments (name) VALUES (?)`;
     const params = [body.name];
@@ -48,14 +50,15 @@ const createNewdepartment = function(body) {
         message: "success",
         data: body,
       });
+      cb();
     });
   };
 
 // Delete department
-const deleteDepartment = function(id) {
-
-  const sql = `DELETE FROM departments WHERE id = ?`;
-  const params = [id];
+const deleteDepartment = function(name) {
+  const departmentName = name.id;
+  const sql = `DELETE FROM departments WHERE name = ?`;
+  const params = [departmentName];
   db.query(sql, params, (err, result) => {
     if (err) {
       console.log({ error: err.message });
@@ -68,10 +71,28 @@ const deleteDepartment = function(id) {
       console.log({
         message: "deleted",
         changes: result.affectedRows,
-        id: id,
+        name: departmentName
       });
     }
   });
+  // const sql = `DELETE FROM departments WHERE id = ?`;
+  // const params = [id];
+  // db.query(sql, params, (err, result) => {
+  //   if (err) {
+  //     console.log({ error: err.message });
+  //     // checks if anything was deleted
+  //   } else if (!result.affectedRows) {
+  //     console.log({
+  //       message: "Department not found",
+  //     });
+  //   } else {
+  //     console.log({
+  //       message: "deleted",
+  //       changes: result.affectedRows,
+  //       id: id,
+  //     });
+  //   }
+  // });
 };
 
 module.exports = {selectAlldepartments,selectOnedepartment,createNewdepartment,deleteDepartment};

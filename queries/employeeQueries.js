@@ -4,7 +4,6 @@ const db = require("../db/connection");
 const selectAllemployees = function(cb) {
 
   const sql = `SELECT * FROM employees ORDER BY last_name`;
-
   db.query(sql, (err, rows) => {
     if (err) {
       console.log({ error: err.message });
@@ -41,6 +40,7 @@ const selectOneemployee = function(id,cb) {
 const createNewemployee = function(body,cb) {
 
   const sql =  `INSERT INTO employees (first_name, last_name) VALUES (?,?)`;       
+    console.log(body.first_name)
   const params = [body.first_name, body.last_name];
 
   db.query(sql, params, (err, result) => {
@@ -82,10 +82,10 @@ const updateEmployee = function(id,body,cb) {
 
 // Delete employee
 const deleteEmployee = function(id,cb) {
-
+  const employeeId = id.id;
   const sql = `DELETE FROM employees WHERE id = ?`;
 
-  db.query(sql, id, (err, result) => {
+  db.query(sql, employeeId, (err, result) => {
     if (err) {
       console.log({ error: err });
     } else if (!result.affectedRows) {
