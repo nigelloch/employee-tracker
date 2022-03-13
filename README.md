@@ -16,11 +16,11 @@ This application allows the user to create, read, update and delete company empl
 
 ##  Installation
 
-User will need to clone the repository to their local machine. Also will require installs of NPM, MYSQL, Express.
+User will need to clone the repository to their local machine. Also will require installs of NPM, MYSQL, Inquirer.
 
 ##  Usage
 
-Refer to the below video for instruction:
+Refer to the below video for instruction and demonstration:
 
 <https://drive.google.com/file/d/1WcMNhxiup7Fg5xx3CYA4GGl9Mn1IHy77/view![image]>
 
