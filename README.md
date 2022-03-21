@@ -20,9 +20,7 @@ User will need to clone the repository to their local machine. Also will require
 
 ##  Usage
 
-Refer to the below video for instruction and demonstration:
-
-<https://drive.google.com/file/d/1WcMNhxiup7Fg5xx3CYA4GGl9Mn1IHy77/view![image]>
+Please see the demonstration video below [here](https://drive.google.com/file/d/1WcMNhxiup7Fg5xx3CYA4GGl9Mn1IHy77/view)
 
 ##  Tests
 
